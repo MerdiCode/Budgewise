@@ -41,7 +41,7 @@ function LogSignIn() {
 
   const logIn = async () => {
     try {
-      const response = await axios.post('http://localhost:4001/users/LogIn', { logEmail, logPass }, { withCredentials: true })
+      const response = await axios.post('https://spark-glorious-telescope.glitch.me/users/LogIn', { logEmail, logPass }, { withCredentials: true })
 
       console.log(response.data)
 

@@ -60,7 +60,7 @@ class Expenses extends Component {
   loadDailyData = async () => {
     let days = [0, 0, 0, 0, 0, 0, 0];
     const daily = await axios.get(
-      "http://localhost:4001/users/getDailyExpenses/",
+      "https://spark-glorious-telescope.glitch.me/users/getDailyExpenses/",
       { withCredentials: true }
     );
     const dailyArr = daily.data;
@@ -101,10 +101,10 @@ class Expenses extends Component {
     let weeks = [0, 0, 0, 0, 0];
     let month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let year = [0, 0, 0, 0, 0, 0, 0];
-    let daily = await axios.get('http://localhost:4001/users/getDailyExpenses/', { withCredentials: true });
-    let weekly = await axios.get('http://localhost:4001/users/getWeeklyExpenses/', { withCredentials: true });
-    let monthly = await axios.get('http://localhost:4001/users/getMonthlyExpenses/', { withCredentials: true });
-    let yearly = await axios.get('http://localhost:4001/users/getYerlyExpenses/', { withCredentials: true });
+    let daily = await axios.get('https://spark-glorious-telescope.glitch.me/users/getDailyExpenses/', { withCredentials: true });
+    let weekly = await axios.get('https://spark-glorious-telescope.glitch.me/users/getWeeklyExpenses/', { withCredentials: true });
+    let monthly = await axios.get('https://spark-glorious-telescope.glitch.me/users/getMonthlyExpenses/', { withCredentials: true });
+    let yearly = await axios.get('https://spark-glorious-telescope.glitch.me/users/getYerlyExpenses/', { withCredentials: true });
 
     let dailyArr = daily.data;
     let weeklyArr = weekly.data;
