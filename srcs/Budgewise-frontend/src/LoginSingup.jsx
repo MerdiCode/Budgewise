@@ -29,7 +29,7 @@ function LogSignIn() {
   const addUser = async () => {
 
     try {
-      const response = await axios.post('http://localhost:4001/users/SignUp/',
+      const response = await axios.post('https://spark-glorious-telescope.glitch.me/users/SignUp/',
         { email, name, password ,balance}, { withCredentials: true })
 
       console.log(response.data.Balance)
