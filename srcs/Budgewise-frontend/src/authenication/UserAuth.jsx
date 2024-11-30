@@ -8,7 +8,7 @@ const [user ,setUser] = useState(null);
 useEffect(()=>{
     const FetchUser =async ()=>{
         try {
-            const result = await axios.get('https://spark-glorious-telescope.glitch.me/users/auth/me',{withCredentials:true})
+            const result = await axios.get('https://spark-glorious-telescope.glitch.me/ss/users/auth/me',{withCredentials:true})
             setUser(result.data)
           } catch (error) {
               console.error(error)
