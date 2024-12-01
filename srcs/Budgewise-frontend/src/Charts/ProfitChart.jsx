@@ -44,7 +44,7 @@ class ProfitChart extends Component {
     loadDailyData = async () => {
       let days = [0, 0, 0, 0, 0, 0, 0];
       const daily = await axios.get(
-        "https://spark-glorious-telescope.glitch.me/users/getDailyProfit/",
+        "https://uttermost-tabby-anatosaurus.glitch.me/users/getDailyProfit/",
         { withCredentials: true }
       );
       const dailyArr = daily.data;
@@ -85,10 +85,10 @@ class ProfitChart extends Component {
       let weeks = [0, 0, 0, 0, 0];
       let month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let year = [0, 0, 0, 0, 0, 0, 0];
-      let daily = await axios.get('https://spark-glorious-telescope.glitch.me/users/getDailyProfit/', { withCredentials: true });
-      let weekly = await axios.get('https://spark-glorious-telescope.glitch.me/users/getWeeklyProfit/', { withCredentials: true });
-      let monthly = await axios.get('https://spark-glorious-telescope.glitch.me/users/getMonthlyProfit/', { withCredentials: true });
-      let yearly = await axios.get('https://spark-glorious-telescope.glitch.me/users/getYerlyProfit/', { withCredentials: true });
+      let daily = await axios.get('https://uttermost-tabby-anatosaurus.glitch.me/users/getDailyProfit/', { withCredentials: true });
+      let weekly = await axios.get('https://uttermost-tabby-anatosaurus.glitch.me/users/getWeeklyProfit/', { withCredentials: true });
+      let monthly = await axios.get('https://uttermost-tabby-anatosaurus.glitch.me/users/getMonthlyProfit/', { withCredentials: true });
+      let yearly = await axios.get('https://uttermost-tabby-anatosaurus.glitch.me/users/getYerlyProfit/', { withCredentials: true });
   
       let dailyArr = daily.data;
       let weeklyArr = weekly.data;
