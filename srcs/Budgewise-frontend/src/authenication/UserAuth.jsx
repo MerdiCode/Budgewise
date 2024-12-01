@@ -8,7 +8,7 @@ const [user ,setUser] = useState(null);
 useEffect(()=>{
     const FetchUser =async ()=>{
         try {
-            const result = await axios.get('https://uttermost-tabby-anatosaurus.glitch.me/users/auth/me',{withCredentials:true})
+            const result = await axios.get('https://troubled-past-drop.glitch.me/users/auth/me',{withCredentials:true})
             setUser(result.data)
           } catch (error) {
               console.error(error)

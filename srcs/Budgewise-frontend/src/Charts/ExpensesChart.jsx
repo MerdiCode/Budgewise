@@ -60,7 +60,7 @@ class Expenses extends Component {
   loadDailyData = async () => {
     let days = [0, 0, 0, 0, 0, 0, 0];
     const daily = await axios.get(
-      "https://uttermost-tabby-anatosaurus.glitch.me/users/getDailyExpenses/",
+      "https://troubled-past-drop.glitch.me/users/getDailyExpenses/",
       { withCredentials: true }
     );
     const dailyArr = daily.data;
@@ -101,10 +101,10 @@ class Expenses extends Component {
     let weeks = [0, 0, 0, 0, 0];
     let month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let year = [0, 0, 0, 0, 0, 0, 0];
-    let daily = await axios.get('https://uttermost-tabby-anatosaurus.glitch.me/users/getDailyExpenses/', { withCredentials: true });
-    let weekly = await axios.get('https://uttermost-tabby-anatosaurus.glitch.me/users/getWeeklyExpenses/', { withCredentials: true });
-    let monthly = await axios.get('https://uttermost-tabby-anatosaurus.glitch.me/users/getMonthlyExpenses/', { withCredentials: true });
-    let yearly = await axios.get('https://uttermost-tabby-anatosaurus.glitch.me/users/getYerlyExpenses/', { withCredentials: true });
+    let daily = await axios.get('https://troubled-past-drop.glitch.me/users/getDailyExpenses/', { withCredentials: true });
+    let weekly = await axios.get('https://troubled-past-drop.glitch.me/users/getWeeklyExpenses/', { withCredentials: true });
+    let monthly = await axios.get('https://troubled-past-drop.glitch.me/users/getMonthlyExpenses/', { withCredentials: true });
+    let yearly = await axios.get('https://troubled-past-drop.glitch.me/users/getYerlyExpenses/', { withCredentials: true });
 
     let dailyArr = daily.data;
     let weeklyArr = weekly.data;
