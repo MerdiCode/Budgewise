@@ -52,7 +52,7 @@ function HomePage() {
     useEffect(() => {
         const getGoal = async () => {
             try {
-                const goal = await axios.get("https://backendbudgewise-2.onrender.com/users/getGoal/", { withCredentials: true });
+                const goal = await axios.get("https://backendbudgewise.onrender.com/users/getGoal/", { withCredentials: true });
 
                 setGoalEmount(goal.data.Goal)
                 setGoalD(goal.data.Goal)
@@ -68,7 +68,7 @@ function HomePage() {
     useEffect(() => {
         const updateBalance = async () => {
             try {
-                await axios.post('https://backendbudgewise-2.onrender.com/users/postBalance/', { balance }, { withCredentials: true })
+                await axios.post('https://backendbudgewise.onrender.com/users/postBalance/', { balance }, { withCredentials: true })
             } catch (error) {
                 if (error) {
                     console.error(error)
@@ -82,7 +82,7 @@ function HomePage() {
         const ProfExp = async () => {
 
             try {
-                const AddProfVsExp = await axios.get("https://backendbudgewise-2.onrender.com/users/getProfVsExp/", { withCredentials: true });
+                const AddProfVsExp = await axios.get("https://backendbudgewise.onrender.com/users/getProfVsExp/", { withCredentials: true });
 
                 setProfVsExpE(Number(AddProfVsExp.data.expenses))
                 setProfVsExpP(Number(AddProfVsExp.data.profit))
@@ -98,7 +98,7 @@ function HomePage() {
 
     const DeleteExpensesList = async (ExpensesID) => {
         try {
-            await axios.post('https://backendbudgewise-2.onrender.com/users/delExpenses/', { ExpensesID }, { withCredentials: true })
+            await axios.post('https://backendbudgewise.onrender.com/users/delExpenses/', { ExpensesID }, { withCredentials: true })
             getExpenses();
         } catch (error) {
             console.error(error)
@@ -106,7 +106,7 @@ function HomePage() {
     }
     const DeleteProfitList = async (ProfitID) => {
         try {
-            await axios.post('https://backendbudgewise-2.onrender.com/users/delProfit/', { ProfitID }, { withCredentials: true })
+            await axios.post('https://backendbudgewise.onrender.com/users/delProfit/', { ProfitID }, { withCredentials: true })
             getProfit();
         } catch (error) {
             console.error(error)
@@ -119,7 +119,7 @@ function HomePage() {
         setProfVsExpE(expenses)
         setProfVsExpP(profit)
         try {
-            await axios.post("https://backendbudgewise-2.onrender.com/users/profExp/", { profExpE, profExpP }, { withCredentials: true });
+            await axios.post("https://backendbudgewise.onrender.com/users/profExp/", { profExpE, profExpP }, { withCredentials: true });
         } catch (err) {
             console.error(err)
         }
@@ -127,7 +127,7 @@ function HomePage() {
     const CreateGoal = async (amount) => {
         setGoalD(amount)
         try {
-            await axios.post('https://backendbudgewise-2.onrender.com/users/updateGoal/', { amount }, { withCredentials: true })
+            await axios.post('https://backendbudgewise.onrender.com/users/updateGoal/', { amount }, { withCredentials: true })
         } catch (error) {
             if (error) {
                 console.error(error)
@@ -142,7 +142,7 @@ function HomePage() {
         }
 
         try {
-            await axios.post('https://backendbudgewise-2.onrender.com/users/Profit/', { profitData }, { withCredentials: true })
+            await axios.post('https://backendbudgewise.onrender.com/users/Profit/', { profitData }, { withCredentials: true })
 
             getProfit();
         } catch (error) {
@@ -159,7 +159,7 @@ function HomePage() {
         }
         try {
             console.log('exp')
-            await axios.post('https://backendbudgewise-2.onrender.com/users/expenses/', { Eamount, Etype }, { withCredentials: true })
+            await axios.post('https://backendbudgewise.onrender.com/users/expenses/', { Eamount, Etype }, { withCredentials: true })
             getExpenses();
 
 
@@ -173,7 +173,7 @@ function HomePage() {
 
     const getExpenses = async () => {
         try {
-            await axios.get('https://backendbudgewise-2.onrender.com/users/getExpenses/', { withCredentials: true })
+            await axios.get('https://backendbudgewise.onrender.com/users/getExpenses/', { withCredentials: true })
                 .then(result => { setDisExpenses(result.data) })
 
         } catch (error) {
@@ -184,7 +184,7 @@ function HomePage() {
 
     const getProfit = () => {
         try {
-            axios.get('https://backendbudgewise-2.onrender.com/users/getProfit/', { withCredentials: true })
+            axios.get('https://backendbudgewise.onrender.com/users/getProfit/', { withCredentials: true })
                 .then(result => { setDProfit(result.data) })
         } catch (error) {
             console.error(error)
@@ -193,7 +193,7 @@ function HomePage() {
 
     const BalancDispaly = async () => {
         try {
-            await axios.get('https://backendbudgewise-2.onrender.com/users/getBalance/', { withCredentials: true })
+            await axios.get('https://backendbudgewise.onrender.com/users/getBalance/', { withCredentials: true })
                 .then(result => setBalance(Number(result.data.Balance)))
         } catch (error) {
             console.error(error)
@@ -210,7 +210,7 @@ function HomePage() {
 
     const LogOut = async () => {
         try {
-            await axios.post('https://backendbudgewise-2.onrender.com/users/Logout/', {}, { withCredentials: true })
+            await axios.post('https://backendbudgewise.onrender.com/users/Logout/', {}, { withCredentials: true })
         } catch (error) {
             console.error(error)
         }

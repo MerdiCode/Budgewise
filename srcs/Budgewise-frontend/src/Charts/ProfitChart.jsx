@@ -85,10 +85,10 @@ class ProfitChart extends Component {
       let weeks = [0, 0, 0, 0, 0];
       let month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let year = [0, 0, 0, 0, 0, 0, 0];
-      let daily = await axios.get('https://backendbudgewise-2.onrender.com/users/getDailyProfit/', { withCredentials: true });
-      let weekly = await axios.get('https://backendbudgewise-2.onrender.com/users/getWeeklyProfit/', { withCredentials: true });
-      let monthly = await axios.get('https://backendbudgewise-2.onrender.com/users/getMonthlyProfit/', { withCredentials: true });
-      let yearly = await axios.get('https://backendbudgewise-2.onrender.com/users/getYerlyProfit/', { withCredentials: true });
+      let daily = await axios.get('https://backendbudgewise.onrender.com/users/getDailyProfit/', { withCredentials: true });
+      let weekly = await axios.get('https://backendbudgewise.onrender.com/users/getWeeklyProfit/', { withCredentials: true });
+      let monthly = await axios.get('https://backendbudgewise.onrender.com/users/getMonthlyProfit/', { withCredentials: true });
+      let yearly = await axios.get('https://backendbudgewise.onrender.com/users/getYerlyProfit/', { withCredentials: true });
   
       let dailyArr = daily.data;
       let weeklyArr = weekly.data;

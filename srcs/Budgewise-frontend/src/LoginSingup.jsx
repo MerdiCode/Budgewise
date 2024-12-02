@@ -29,7 +29,7 @@ function LogSignIn() {
   const addUser = async () => {
 
     try {
-      const response = await axios.post('https://backendbudgewise-2.onrender.com/users/SignUp/',
+      const response = await axios.post('https://backendbudgewise.onrender.com/users/SignUp/',
         { email, name, password ,balance}, { withCredentials: true })
 
       console.log(response.data.Balance)
@@ -41,7 +41,7 @@ function LogSignIn() {
 
   const logIn = async () => {
     try {
-      const response = await axios.post('https://backendbudgewise-2.onrender.com/users/LogIn', { logEmail, logPass }, { withCredentials: true })
+      const response = await axios.post('https://backendbudgewise.onrender.com/users/LogIn', { logEmail, logPass }, { withCredentials: true })
 
       console.log(response.data)
 
