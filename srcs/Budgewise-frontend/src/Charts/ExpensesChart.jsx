@@ -103,7 +103,7 @@ class Expenses extends Component {
     let year = [0, 0, 0, 0, 0, 0, 0];
     let daily = await axios.get('https://backendbudgewise.onrender.com/users/getDailyExpenses/', { withCredentials: true });
     let weekly = await axios.get('https://backendbudgewise.onrender.com/users/getWeeklyExpenses/', { withCredentials: true });
-    let monthly = await axios.get('https://backendbudgewise-2.onrender.com/users/getMonthlyExpenses/', { withCredentials: true });
+    let monthly = await axios.get('https://backendbudgewise.onrender.com/users/getMonthlyExpenses/', { withCredentials: true });
     let yearly = await axios.get('https://backendbudgewise.onrender.com/users/getYerlyExpenses/', { withCredentials: true });
 
     let dailyArr = daily.data;

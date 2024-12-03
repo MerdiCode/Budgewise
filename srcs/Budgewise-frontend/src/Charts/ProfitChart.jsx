@@ -44,7 +44,7 @@ class ProfitChart extends Component {
     loadDailyData = async () => {
       let days = [0, 0, 0, 0, 0, 0, 0];
       const daily = await axios.get(
-        "https://backendbudgewise-2.onrender.com/users/getDailyProfit/",
+        "https://backendbudgewise.onrender.com/users/getDailyProfit/",
         { withCredentials: true }
       );
       const dailyArr = daily.data;
