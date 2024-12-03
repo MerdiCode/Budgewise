@@ -115,7 +115,7 @@ function HomePage() {
 
     const updateProfVsExp = async (profit, expenses) => {
 
-        console.log(profit, expenses)
+      
         setProfVsExpE(expenses)
         setProfVsExpP(profit)
         try {
