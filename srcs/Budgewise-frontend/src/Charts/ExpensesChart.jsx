@@ -59,52 +59,13 @@ class Expenses extends Component {
 
   }
 
-  async componentDidMount() {
-    await this.loadDailyData();
-  }
-
-  loadDailyData = async () => {
-    let days = [0, 0, 0, 0, 0, 0, 0];
-    const daily = await axios.get(
-      "https://backendbudgewise.onrender.com/users/getDailyExpenses/",
-      { withCredentials: true }
-    );
-    const dailyArr = daily.data;
-
-    dailyArr.forEach((value) => {
-      days[(Number(value.day) + 3) % 7] = value.Data;
-    });
-
-    this.setState({
-      series: [
-        {
-          name: "Daily",
-          data: days,
-        },
-      ],
-    });
-
-    ApexCharts.exec("basic-bar", "updateOptions", {
-      xaxis: {
-        categories: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-      },
-    });
-  };
-
   changeOptions = async (val) => {
     let days = [0, 0, 0, 0, 0, 0, 0];
     let weeks = [0, 0, 0, 0, 0];
     let month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let year = [0, 0, 0, 0, 0, 0, 0];
 
+    // Fetch data for different time periods
     let daily = await axios.get('https://backendbudgewise.onrender.com/users/getDailyExpenses/', { withCredentials: true });
     let weekly = await axios.get('https://backendbudgewise.onrender.com/users/getWeeklyExpenses/', { withCredentials: true });
     let monthly = await axios.get('https://backendbudgewise.onrender.com/users/getMonthlyExpenses/', { withCredentials: true });
@@ -115,6 +76,7 @@ class Expenses extends Component {
     let monthlyArr = monthly.data;
     let YearlyArr = yearly.data;
 
+    // Fill the data arrays with the fetched values
     dailyArr.forEach((value) => {
       days[(Number(value.day) + 3) % 7] = value.Data;
     });
@@ -159,63 +121,56 @@ class Expenses extends Component {
       },
     ];
 
+    // Set the categories based on the selected option
+    let categories = [];
     switch (val.target.value) {
       case 'Daily':
-        ApexCharts.exec('basic-bar', 'updateOptions', {
-          xaxis: {
-            categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-          },
-        });
-        this.setState({
-          series: dailySeries,
-        });
+        categories = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        this.setState({ series: dailySeries });
         break;
 
       case 'Weekly':
-        ApexCharts.exec('basic-bar', 'updateOptions', {
-          xaxis: {
-            categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
-          },
-        });
-        this.setState({
-          series: weeklySeries,
-        });
+        categories = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
+        this.setState({ series: weeklySeries });
         break;
 
       case 'Monthly':
-        ApexCharts.exec('basic-bar', 'updateOptions', {
-          xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-          },
-        });
-        this.setState({
-          series: MonthlySeries,
-        });
+        categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        this.setState({ series: MonthlySeries });
         break;
 
       case 'Yearly':
-        ApexCharts.exec('basic-bar', 'updateOptions', {
-          xaxis: {
-            categories: ['2024', '2025', '2026', '2027', '2028', '2029', '2030'],
-          },
-        });
-        this.setState({
-          series: YearlySeries,
-        });
+        categories = ['2024', '2025', '2026', '2027', '2028', '2029', '2030'];
+        this.setState({ series: YearlySeries });
         break;
 
       default:
-        ApexCharts.exec('basic-bar', 'updateOptions', {
-          xaxis: {
-            categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-          },
-        });
-        this.setState({
-          series: dailySeries,
-        });
+        categories = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        this.setState({ series: dailySeries });
         break;
     }
+
+    // After updating the state, we update the chart options
+    this.setState(
+      (prevState) => ({
+        options: {
+          ...prevState.options,
+          xaxis: {
+            categories,
+          },
+        },
+      }),
+      () => {
+        // Update the chart using ApexCharts after state is updated
+        ApexCharts.exec('basic-bar', 'updateOptions', {
+          xaxis: {
+            categories: categories,
+          },
+        });
+      }
+    );
   };
+
 
 
   render() {
