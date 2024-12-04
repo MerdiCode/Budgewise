@@ -93,14 +93,12 @@ class Expenses extends Component {
     });
   };
 
-
-
   changeOptions = async (val) => {
-   
     let days = [0, 0, 0, 0, 0, 0, 0];
     let weeks = [0, 0, 0, 0, 0];
     let month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let year = [0, 0, 0, 0, 0, 0, 0];
+
     let daily = await axios.get('https://backendbudgewise.onrender.com/users/getDailyExpenses/', { withCredentials: true });
     let weekly = await axios.get('https://backendbudgewise.onrender.com/users/getWeeklyExpenses/', { withCredentials: true });
     let monthly = await axios.get('https://backendbudgewise.onrender.com/users/getMonthlyExpenses/', { withCredentials: true });
@@ -108,12 +106,12 @@ class Expenses extends Component {
 
     let dailyArr = daily.data;
     let weeklyArr = weekly.data;
-    let monthlyArr = monthly.data
-    let YearlyArr = yearly.data
+    let monthlyArr = monthly.data;
+    let YearlyArr = yearly.data;
+
     dailyArr.forEach((value) => {
       days[(Number(value.day) + 3) % 7] = value.Data;
     });
-
 
     weeklyArr.forEach((value) => {
       weeks[Math.floor(Number(value.day) / 7)] = value.Data;
@@ -122,36 +120,39 @@ class Expenses extends Component {
     monthlyArr.forEach((value) => {
       month[value.month - 1] = value.Data;
     });
+
     YearlyArr.forEach((value) => {
       year[0] = value.Data;
     });
-
 
     const dailySeries = [
       {
         name: "Daily",
         data: days,
-      }
+      },
     ];
 
     const weeklySeries = [
       {
         name: "Weekly",
         data: weeks,
-      }
+      },
     ];
+
     const MonthlySeries = [
       {
         name: "Monthly",
         data: month,
-      }
+      },
     ];
+
     const YearlySeries = [
       {
-        name: "Monthly",
+        name: "Yearly",
         data: year,
-      }
+      },
     ];
+
     switch (val.target.value) {
       case 'Daily':
         ApexCharts.exec('basic-bar', 'updateOptions', {
@@ -163,8 +164,8 @@ class Expenses extends Component {
           series: dailySeries,
         });
         break;
-     
-        case 'Weekly':
+
+      case 'Weekly':
         ApexCharts.exec('basic-bar', 'updateOptions', {
           xaxis: {
             categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
@@ -174,21 +175,19 @@ class Expenses extends Component {
           series: weeklySeries,
         });
         break;
-      
-        case 'Monthly':
+
+      case 'Monthly':
         ApexCharts.exec('basic-bar', 'updateOptions', {
           xaxis: {
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
           },
         });
         this.setState({
-
-
           series: MonthlySeries,
         });
         break;
-    
-        case 'Yearly':
+
+      case 'Yearly':
         ApexCharts.exec('basic-bar', 'updateOptions', {
           xaxis: {
             categories: ['2024', '2025', '2026', '2027', '2028', '2029', '2030'],
@@ -198,8 +197,9 @@ class Expenses extends Component {
           series: YearlySeries,
         });
         break;
-        default:
-            ApexCharts.exec('basic-bar', 'updateOptions', {
+
+      default:
+        ApexCharts.exec('basic-bar', 'updateOptions', {
           xaxis: {
             categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
           },
@@ -209,7 +209,7 @@ class Expenses extends Component {
         });
         break;
     }
-  }
+  };
 
 
   render() {
