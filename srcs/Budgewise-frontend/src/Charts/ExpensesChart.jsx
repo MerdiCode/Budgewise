@@ -34,7 +34,13 @@ class Expenses extends Component {
           tickPlacement: 'between',
 
           type: 'category',
-          categories: []
+          categories: ["Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",]
         }
       },
       series: [
