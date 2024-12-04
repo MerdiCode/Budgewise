@@ -7,7 +7,6 @@ import axios from "axios"
 import ProfVsExp from "./Charts/ProfitVsExpensesChart.jsx"
 import { UsersAuth } from "./authenication/UserAuth.jsx"
 import { createContext, useContext } from "react"
-import { Navigate } from 'react-router-dom';
 export const values = createContext(null);
 
 function HomePage() {
