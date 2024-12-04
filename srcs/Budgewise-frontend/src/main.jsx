@@ -5,7 +5,9 @@ import App from './App.jsx'
 import AuthProvider from './authenication/UserAuth.jsx'
 createRoot(document.getElementById('root')).render(
  <AuthProvider>
+
  <App />
+
  </AuthProvider>
  
 )
