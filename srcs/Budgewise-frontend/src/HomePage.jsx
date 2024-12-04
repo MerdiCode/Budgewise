@@ -7,6 +7,7 @@ import axios from "axios"
 import ProfVsExp from "./Charts/ProfitVsExpensesChart.jsx"
 import { UsersAuth } from "./authenication/UserAuth.jsx"
 import { createContext, useContext } from "react"
+import {Navigate} from 'react-router-dom'
 export const values = createContext(null);
 
 function HomePage() {
@@ -210,6 +211,7 @@ function HomePage() {
     const LogOut = async () => {
         try {
             await axios.post('https://backendbudgewise.onrender.com/users/Logout/', {}, { withCredentials: true })
+            Navigate('/Register')
         } catch (error) {
             console.error(error)
         }
@@ -477,7 +479,7 @@ function HomePage() {
             <div className="container-md   HeaderBody" style={{ margin: '0 auto', position: "relative", padding: '0px 30px' }}>
                 <div className="Header shadow d-none d-md-flex d-lg-flex  justify-content-between align-items-center">
                     <img style={{ margin: 'auto auto' }} src={Logo} className="mt-4 ms-3" alt="" width={'160px'} height={'30px'} />
-                    <button onClick={async () => { await LogOut(), history.go(0) }} style={{ color: 'white', position: 'relative' }} className="addGoal me-5">Log out</button></div>
+                    <button onClick={async () => { await LogOut()}} style={{ color: 'white', position: 'relative' }} className="addGoal me-5">Log out</button></div>
                 {loadingBar()}
                 {DailyLists()}
                 {ChartDisplay()}
