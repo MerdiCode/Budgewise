@@ -17,6 +17,9 @@ function LogSignIn() {
   let [animation, SetAnimation] = useState('')
   const navigate = useNavigate();
 
+  axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'https://backendbudgewise.onrender.com';
+
   const imgs = () => {
     return (<>
         <img className="imgs" style={{ position: "absolute", left: '-50px', top: "-200px", rotate: '50deg', width: '600px', height: '600px' }} src={DolarSign} alt="" />
@@ -32,7 +35,11 @@ function LogSignIn() {
 
     try {
       const response = await axios.post('https://backendbudgewise.onrender.com/users/SignUp/',
-        { email, name, password ,balance}, { withCredentials: true })
+        { email, name, password ,balance}, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
         navigate('/');
       console.log(response.data.Balance)
     } catch (error) {
@@ -41,15 +48,21 @@ function LogSignIn() {
 
   }
 
-  const logIn = async () => {
+// In your authentication calls
+const logIn = async () => {
     try {
-      const response = await axios.post('https://backendbudgewise.onrender.com/users/LogIn', { logEmail, logPass }, { withCredentials: true })
-
-  navigate('/');
-      console.log(response.data)
-
+        const response = await axios.post('/users/LogIn', 
+            { logEmail, logPass },
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+        navigate('/');
     } catch (error) {
-      console.error(error)
+        console.error('Login Error:', error.response?.data);
+        // Handle login error
     }
   }
 
