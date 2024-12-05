@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "axios";
 import Logo from './assets/MoneyTackerLogo.png'
 import DolarSign from "./assets/Dolar.png"
+import { useNavigate } from "react-router-dom";
 
 function LogSignIn() {
   let [email, setEmail] = useState();
@@ -14,6 +15,7 @@ function LogSignIn() {
 
   let [Select, SetSelect] = useState('login')
   let [animation, SetAnimation] = useState('')
+  const navigate = useNavigate();
 
   const imgs = () => {
     return (<>
@@ -31,7 +33,7 @@ function LogSignIn() {
     try {
       const response = await axios.post('https://backendbudgewise.onrender.com/users/SignUp/',
         { email, name, password ,balance}, { withCredentials: true })
-
+        navigate('/');
       console.log(response.data.Balance)
     } catch (error) {
       console.error(error)
@@ -43,6 +45,7 @@ function LogSignIn() {
     try {
       const response = await axios.post('https://backendbudgewise.onrender.com/users/LogIn', { logEmail, logPass }, { withCredentials: true })
 
+  navigate('/');
       console.log(response.data)
 
     } catch (error) {
