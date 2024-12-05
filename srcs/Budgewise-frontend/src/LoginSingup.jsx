@@ -63,7 +63,7 @@ function LogSignIn() {
 
         <input onChange={(e) => { SetLogEmail(e.target.value) }} type="email" name="email" placeholder="Email" required />
         <input onChange={(e) => { SetLogPass(e.target.value) }} type="password" name="pass" placeholder="Password" required />
-        <button onClick={async () => { await logIn()}} className="action-button">Log In</button>
+        <button onClick={async () => { await logIn(), history.go(0) }} className="action-button">Log In</button>
       </div>
 
     </>)
