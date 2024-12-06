@@ -1,8 +1,6 @@
 import axios from "axios";
 import { createContext,useEffect, useState } from "react";
-
 export const UsersAuth = createContext();
-
 const AuthProvider =  ({children})=>{
 const [user ,setUser] = useState(null);
 useEffect(()=>{
@@ -15,12 +13,11 @@ useEffect(()=>{
           }
     }
    FetchUser()
-    
+   
 },[])
 console.log(user)
 return(<UsersAuth.Provider value={{user}}>
 {children}
 </UsersAuth.Provider>)
-
 }
 export default AuthProvider;
