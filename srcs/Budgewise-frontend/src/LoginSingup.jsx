@@ -17,8 +17,6 @@ function LogSignIn() {
   let [animation, SetAnimation] = useState('')
   const navigate = useNavigate();
 
-  axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'https://backendbudgewise.onrender.com';
 
   const imgs = () => {
     return (<>
@@ -35,7 +33,7 @@ axios.defaults.baseURL = 'https://backendbudgewise.onrender.com';
 
     try {
       const response = await axios.post('https://backendbudgewise.onrender.com/users/SignUp/',
-        { email, name, password ,balance}, {
+        { email, name, password ,balance}, { withCredentials: true }, {
           headers: {
               'Content-Type': 'application/json'
           }
@@ -51,8 +49,7 @@ axios.defaults.baseURL = 'https://backendbudgewise.onrender.com';
 // In your authentication calls
 const logIn = async () => {
     try {
-        const response = await axios.post('/users/LogIn', 
-            { logEmail, logPass },
+      const response = await axios.post('https://backendbudgewise.onrender.com/users/LogIn', { logEmail, logPass }, { withCredentials: true },
             {
                 headers: {
                     'Content-Type': 'application/json'
